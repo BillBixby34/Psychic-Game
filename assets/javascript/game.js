@@ -6,8 +6,8 @@ var computerGuess = letterbox[Math.floor(Math.random() * letterbox.length)];
 var userMiss = []
 //should be array captured from userGuess
 
-reset();
-display();
+
+
 
 document.onkeyup = function(event) {
   
@@ -15,9 +15,9 @@ document.onkeyup = function(event) {
   //if(event.key.match(/^[a-z]$/)) {
 
   var userGuess = event.key; 
-  for (event.key.match(/^[a-z]$/)) {
-  
-  userMiss.push(userGuess);
+
+  if (userGuess !== computerGuess) {//may change to for loop
+    userMiss.push(userGuess);
   }//hopefully captures user input into arrays 
   if (userGuess === computerGuess) {
     win();
@@ -27,19 +27,23 @@ document.onkeyup = function(event) {
       loser();
     }
      else {
-      whiff();//function for misses
+      whiff();//guesses left is not decreasing
      }
   
 
     function whiff(){
       userChance --;
+      document.getElementById("UserMiss").innerHTML = "Guesses So Far " + userMiss;
     }
     function loser(){
       losses ++;
+      document.getElementById("losses").innerHTML = "Losses: " + losses;
       resetGame();
     }
     function win(){
       wins ++;
+      document.getElementById("wins").innerHTML = "Wins: " + wins;
+
       resetGame();
     }
 
@@ -47,18 +51,20 @@ document.onkeyup = function(event) {
       userChance = 9;
       userMiss = [];
     }
+  }
 //need to figure out how to place the document.getElementbyID
-    function display() {
+    /*function display() {
       document.getElementById("UserMiss").innerHTML += userGuess + " ";
-      document.getElementById("wins").innerHTML = "Wins: " + wins;
+     
       
 
       document.getElementById("userChance").innerHTML = "Guesses Left: " + userChance;
-      document.getElementById("UserMiss").innerHTML = "Guesses So Far " + userMiss;
+      
       document.getElementById("UserChance").innerHTML = "Guesses Left: " + userChance;
-      document.getElementById("losses").innerHTML = "Losses: " + losses;
+      
       document.getElementById("userChance").innerHTML = "Guesses Left: " + guessesleft;
       document.getElementById("UserMiss").innerHTML = "Guesses So Far: " + userMiss;
     }
 
-}
+}*/
+

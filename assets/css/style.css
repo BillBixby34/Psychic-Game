@@ -1,0 +1,15 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #f6ecea;
+	font-family: 'futura', "Times New Roman", serif;
+	
+}
+#title {
+	height: 90px;
+	background-color: #333; 
+	font-color: white;
+	font-size: 24px;
+}
